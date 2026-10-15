@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>me.ttno1</groupId>
+	<artifactId>componentcalculator</artifactId>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
+
+	<name>Component Calculator</name>
+	<description></description>
+	<url></url>
+	<inceptionYear>2026</inceptionYear>
+
+	<properties>
+		<me.ttno1.componentcalculator.author></me.ttno1.componentcalculator.author>
+		<me.ttno1.componentcalculator.mainClass>me.ttno1.componentcalculator.Main</me.ttno1.componentcalculator.mainClass>
+		<maven.compiler.source>24</maven.compiler.source>
+		<maven.compiler.target>24</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>ch.obermuhlner</groupId>
+			<artifactId>big-math</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.5.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<manifestEntries>
+										<Main-Class>${me.ttno1.componentcalculator.mainClass}</Main-Class>
+										<Built-By>${me.ttno1.componentcalculator.author}</Built-By>
+										<url>${project.url}</url>
+									</manifestEntries>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
